@@ -1,3 +1,3 @@
-# template
+# xbrew template
 
-This is a template for starting new 3DS libctru projects.
+This is a template for starting 3DS libctru projects.
