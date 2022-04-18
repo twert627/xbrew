@@ -2,6 +2,7 @@
 
 #include "cli.h"
 #include "version.h"
+#include "fs.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -56,14 +57,14 @@ int key_from_string(char *key) {
   return BADKEY;
 }
 
-void cli_init(const char *name, char *console) {
+void cli_init(char *name, char *console) {
   printf(GRN);
   printf("Creating new project %s...\n", name);
   printf(reset);
 
   int check;
 #ifdef __linux__
-  check = mkdir(name, 777);
+  check = mkdir(name, 0775);
 #else
   check = _mkdir(name);
 #endif
@@ -71,45 +72,33 @@ void cli_init(const char *name, char *console) {
   /* Make project directory if check passes */
   if (!check) {
 #ifdef __linux__
-    mkdir(name, 777);
+    mkdir(name, 0775);
 #else
     _mkdir(name);
 #endif
 
     /* Copy over boilerplate */
 #ifdef __linux__
-    struct dirent **name_list;
-    int n;
-
-    n = scandir("templates/", &name_list, NULL, alphasort);
-    if (n == -1) {
-      printf(RED);
-      printf("Scan of 'templates' directory failed... exiting!\n");
-      printf(reset);
-      _exit(1);
-    }
-
-    struct dirent **files_list;
-    int f;
-
-    if (0 == strncmp(console, "3ds", 3)) {
-      f = scandir("templates/3ds/", &files_list, NULL, alphasort);
-      if (f == -1) {
+    switch (key_from_string(console)) {
+      case TDS:
+        copy_dir_contents("templates/3ds", name);
+        copy_dir_contents("templates/_common", name);
+        break;
+      case NDS:
+        copy_dir_contents("templates/nds", name);
+        copy_dir_contents("templates/_common", name);
+        break;
+      case SWITCH:
+        copy_dir_contents("templates/switch", name);
+        copy_dir_contents("templates/_common", name);
+        break;
+      case BADKEY:
         printf(RED);
-        printf("Scan of 'templates/3ds' directory failed... exiting!\n");
+        printf("xbrew forgot what the console was, please report this bug!\n");
         printf(reset);
         _exit(1);
-      }
-      while (f--) {
-        if (strcmp(files_list[f]->d_name, ".") != 0 && strcmp(files_list[f]->d_name, "..") != 0) {
-          printf("%s\n", files_list[f]->d_name);
-          
-          
-        }
-      }
+        break;
     }
-    free(files_list);
-    free(name_list);
 #else
 
 #endif

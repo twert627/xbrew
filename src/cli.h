@@ -79,7 +79,7 @@
 #define COLOR_RESET "\e[0m"
 
 int cli_args(char** argv);
-void cli_init(const char* name, char *console);
+void cli_init(char* name, char *console);
 void copy_project(const char *name, char* location, char *dest[], char *console);
 
 #endif
