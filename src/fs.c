@@ -50,11 +50,11 @@ int copy_file(const char *from, char *to) {
     return 1;
 }
 
-static int cp_callback(const char *fpath, const struct stat *sb, int type_flag, struct FTW*ftwbuf) {
+static int cp_callback(const char *fpath, const struct stat *sb, int type_flag, struct FTW *ftwbuf) {
     char to_location[1024];
     sprintf(to_location, "%s/%s", copy_to_path, fpath + strlen(copy_from_path) + 1);
 
-    if(type_flag & FTW_D) {
+    if(type_flag &FTW_D) {
         /* Directory found */
         if(ftwbuf->level == 0) {
             /* Depth check of recursiveness (0 == '/' [root] FIXME) */
@@ -74,7 +74,7 @@ static int cp_callback(const char *fpath, const struct stat *sb, int type_flag, 
 int copy_dir_contents(char *path, char *to) {
     if(copy_busy) {
         printf(RED);
-        fprintf(stderr, "copy busy\n");
+        fprintf(stderr, "copy busy!\n");
         printf(reset);
         return 0;
     }
