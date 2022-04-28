@@ -3,7 +3,7 @@
 check_internet() {
     # Credit to <https://stackoverflow.com/questions/17291233/how-can-i-check-internet-access-using-a-bash-script-on-linux>
     echo "Checking for internet..."
-    wget -q --tries=10 --timeout=20 --spider http://example.com
+    wget -q --tries=10 --timeout=20 --spider http://github.com
     if [[ $? -eq 0 ]]; then
         echo "Online"
         echo ""

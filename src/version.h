@@ -1,3 +1,3 @@
-#ifndef version
-#define version "0.0.2"
+#ifndef xbrew_version
+#define xbrew_version "v0.0.2"
 #endif

@@ -1,6 +1,7 @@
 #include "common.h"
 
 #include "cli.h"
+#include "upgrade.h"
 #include "version.h"
 #include "fs.h"
 #include <dirent.h>
@@ -29,7 +30,7 @@ static const char *usage =
     "    configure [name...]  Configure one or more packages\n"
     "    build [name...]      Build one or more packages\n"
     "    search [query]       Search for packages\n"
-    "    help <xbrew>      Display help for xbrew\n"
+    "    help <xbrew>         Display help for xbrew\n"
     "";
 
 #define BADKEY -1
@@ -125,7 +126,7 @@ int cli_args(char **argv) {
 
   /* version */
   if (0 == strncmp(argv[1], "-v", 2) || 0 == strncmp(argv[1], "--version", 9)) {
-    printf("%s\n", version);
+    printf("%s\n", xbrew_version);
     return 0;
   }
 
@@ -139,6 +140,7 @@ int cli_args(char **argv) {
       printf(RED);
       printf("265 character limit! Please choose a smaller name\n");
       printf(reset);
+      _exit(1);
     }
 
     if (argv[2] != NULL) {
@@ -157,6 +159,11 @@ int cli_args(char **argv) {
       }
     }
     cli_init(project, NULL);
+  }
+
+  /* Upgrade xbrew */
+  if (0 == strncmp(argv[1], "up", 2) || 0 == strncmp(argv[1], "upgrade", 7)) {
+    upgrade();
   }
 
   /* unknown */
