@@ -20,14 +20,14 @@ install_packages() {
     case $DISTRIB in
     ubuntu)
         echo "Installing required packages to compile xbrew on Ubuntu..."
-        sudo apt-get update && sudo apt-get install build-essential # Ubuntu includes build-essential for compiling C code
+        sudo apt-get update && sudo apt-get install build-essential curl # Ubuntu includes build-essential for compiling C code, curl for networking
         echo "Checking installed packages..."
         gcc -v
         make -v
         ;;
     debian) 
         echo "Installing required packages to compile xbrew on Debian..."
-        sudo apt-get update && sudo apt-get install build-essential # Debian and Ubuntu use same package manager :)
+        sudo apt-get update && sudo apt-get install build-essential curl # Debian and Ubuntu use same package manager :)
         echo "Checking installed packages..."
         gcc -v
         make -v
