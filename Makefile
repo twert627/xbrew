@@ -6,7 +6,7 @@ SRC_DIRS  := ./src
 
 SRCS      := $(shell find $(SRC_DIRS) -name '*.c' -or -name '*.s')
 OBJS      := $(SRCS:%=$(BUILD_DIR)/%.o)
-DEPS 	  := $(OBJS:.o=.d)
+DEPS 	    := $(OBJS:.o=.d)
 
 INC_DIRS  := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS)) 

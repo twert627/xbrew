@@ -16,6 +16,7 @@ check_internet() {
 install_packages() {
     echo "Installing packages..."
 
+    # TODO: Add RedHat and Fedora support
     case $DISTRIB in
     ubuntu)
         echo "Installing required packages to compile xbrew on Ubuntu..."

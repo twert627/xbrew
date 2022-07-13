@@ -131,7 +131,7 @@ int cli_args(char **argv) {
   }
 
   /* Project init */
-  if (0 == strncmp(argv[1], "init", 4)) {
+  if (0 == strncmp(argv[1], "-i", 2) || 0 == strncmp(argv[1], "--init", 6)) {
     printf("Enter project name\n");
     char project[256];
     scanf("%s", project);

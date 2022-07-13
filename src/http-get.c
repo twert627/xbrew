@@ -104,6 +104,7 @@ int http_get_file_shared(const char *url, const char *file, CURLSH *share) {
   curl_easy_setopt(req, CURLOPT_FOLLOWLOCATION, 1);
   curl_easy_setopt(req, CURLOPT_WRITEFUNCTION, http_get_file_cb);
   curl_easy_setopt(req, CURLOPT_WRITEDATA, fp);
+  curl_easy_setopt(req, CURLOPT_USERAGENT, "User-Agent: xbrew"); /* Set user agent header to xbrew for GitHub support, maybe change if this causes any errors down the road */
   int res = curl_easy_perform(req);
 
   long status;
