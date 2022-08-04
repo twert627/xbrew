@@ -14,7 +14,7 @@
 #define CURRENT_VERSION_URL                                                    \
   "https://api.github.com/repos/twert627/xbrew/releases/latest"
 
-#define XBREW_ASSET_URL "https://api.github.com/repos/twert627/xbrew/tarball/"
+#define XBREW_ASSET_URL "https://github.com/twert627/xbrew/releases/download/"
 
 const char *fetch_current_version() {
   http_get_response_t *res = http_get(CURRENT_VERSION_URL);
@@ -59,10 +59,12 @@ int fetch_current_package() {
   FILE *fp;
   const char *release_version = fetch_current_version();
 
-  char release_asset[100];
-  memcpy(release_asset + strlen(release_asset), XBREW_ASSET_URL, sizeof(XBREW_ASSET_URL));
-  memcpy(release_asset + strlen(release_asset), release_version, strlen(release_version));
-  
+  char release_asset[256];
+  strcpy(release_asset, XBREW_ASSET_URL);
+  strcat(release_asset, release_version);
+  strcat(release_asset, "/xbrew");
+  printf("%s\n", release_asset);
+
   http_get_file(release_asset, "xbrew");
   fp = fopen("xbrew", "r");
   if (fp == NULL) {
@@ -73,14 +75,7 @@ int fetch_current_package() {
   } else {
     printf(BLU);
     printf("xbrew version: %s downloaded.\n", release_version);
-    /* TODO: maybe write another program that is just an installer? */
-    printf("xbrew is unable to install itself, please run the install script instead\n");
-    printf("`$ sudo ./scripts/install.sh`\n");
-    printf("Or copy the file to /usr/bin\n");
-    printf(reset);
-
-
-    /*printf("Would you like to install [Y/n]\n");
+    printf("Would you like to install [Y/n]\n");
     printf(reset);
     
     char resp[1];
@@ -96,7 +91,7 @@ int fetch_current_package() {
       printf("ERROR: Invalid input!\n");
       printf(reset);
       return 1;
-    }*/
+    }
   }
   return 0;
 }

@@ -162,7 +162,7 @@ int cli_args(char **argv) {
   }
 
   /* Upgrade xbrew */
-  if (0 == strncmp(argv[1], "up", 2) || 0 == strncmp(argv[1], "upgrade", 7)) {
+  if (0 == strncmp(argv[1], "-up", 3) || 0 == strncmp(argv[1], "--upgrade", 9)) {
     upgrade();
   }
 
