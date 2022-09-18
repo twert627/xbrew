@@ -23,49 +23,51 @@
 * [Contact](#contact)
 * [Special Thanks To](#special-thanks-to)
 
-## 🤔 About the Project
+<h2 id="about-the-project">🤔 About the Project</h2>
 xbrew was developed as a way of having a package manager for homebrew (as in video game console homebrew). Currently it only supports importing boilerplate
 code for setting up homebrew application development, howerver I plan on integrating it into BrewShop(soon:tm:) for more fun features!
 
-### 🔨 Built With
-- GCC
-- Make
-- Bash
-- Git
+<h3 id="built-with">🔨 Built With</h3>
+<ul>
+<li> GCC (ANSI C) </li>
+<li> Make </li>
+<li> Bash </li>
+<li> Git </li>
+</ul>
 
-## 💡 Usage
+<h2 id="usage">💡 Usage</h2>
 type `xbrew -h` for feature list [Note: most features won't work yet, as xbrew is very early in development]
 
-### 🧪 Experimental Notice
+<h3 id="experimental-notice">🧪 Experimental Notice<h3>
 
 For now, the project entirely fluid and **can change at any moment**.
 do not expect everything to work 100% of the time, if something is broken, please make an issue [here](https://github.com/twert627/xbrew/issues/new)
 
-### 👋 More Info
+<h3 id="more-info">👋 More Info</h3>
  
 Requires DevKitPro to compile boilerplate code, auto installation coming soon:tm:
 
-### 🌟 Features
+<h3 id="features">🌟 Features</h3>
 
 - soon:tm:
 
-## 🚧 Roadmap
+<h2 id="roadmap">🚧 Roadmap</h2>
 
 To see the roadmap of where this project is headed, take a look at the project board [here](https://github.com/twert627/xbrew/projects)
 
-## 🤷 Contributing
+<h2 id="contributing">🤷 Contributing</h2>
 
 We are always open to contributions! If you want to help, be sure to look at the [Contributing.md](https://github.com/twert627/xbrew/blob/master/Contributing.md)
 
-## 🖊️ License
+<h2 id="license">🖊️ License</h2>
 
 This project uses the GNU GPL v3 license, to see more information about the license, please see [License.md](https://github.com/twert627/xbrew/blob/master/License.md)
 
-## 💬 Contact
+<h2 id="contact">💬 Contact</h2>
 
 We will usually respond to issues, however if you need another means of contact, you can use (Discord tag), or (email).
 
-## 🎁 Special Thanks To
+<h2 id="special-thanks-to">🎁 Special Thanks To</h2>
 
 - Stack Overflow
 - WinterMute 
