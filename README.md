@@ -6,6 +6,8 @@
 <h2 align="center"> CLI homebrew utility :fire:.
 </h2>
 
+[![Bobert the buildbot](https://github.com/twert627/xbrew/actions/workflows/makefile.yml/badge.svg)](https://github.com/twert627/xbrew/actions/workflows/makefile.yml)
+
 <p align="center">
 	Made with :heart: and :coffee: by <a href="https://github.com/twert627/xbrew/graphs/contributors">these</a> lovely people!
 </p>
