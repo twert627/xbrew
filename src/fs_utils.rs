@@ -1,6 +1,5 @@
 use std::fs::{copy, File};
-use std::io::prelude::*;
-use std::io::Error;
+use std::io::{prelude::*, Error};
 
 pub fn read_file(input: String) -> String {
     let file_name: String = input;

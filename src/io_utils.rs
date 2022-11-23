@@ -1,28 +1,42 @@
-use std::io::{self, BufRead};
+use std::env;
+use std::io;
 
-pub fn read_input() -> io::Result<()> {
-    let mut lines = io::stdin().lock().lines();
-    let mut user_input = String::new();
+#[path = "project.rs"]
+mod project;
 
-    while let Some(line) = lines.next() {
-        let last_input = line.unwrap();
+pub fn handle_args() {
+    let help: &str = "xbrew <command> [options]\n\
+                      \n\
+                      Options:\n\
+                      \n\
+                        -h, --help  Output this message\n\
+                      \n\
+                      Commands:\n\
+                      \n\
+                        init        Start a new project\n\
+                        up, update  Update xbrew to a specified or latest version";
 
-        // stop reading
-        if last_input.len() == 0 {
-            break;
-        }
+    let args: Vec<String> = env::args().collect();
+    let mut command = String::new();
 
-        // add a new line once user_input starts storing user input
-        if user_input.len() > 0 {
-            user_input.push_str("\n");
-        }
-
-        // store user input
-        user_input.push_str(&last_input);
+    if args.len() < 2 {
+        println!("At least one argument is required, showing help\n");
+        println!("{}", help);
+    } else {
+        command = args[1].clone();
     }
 
-    println!("\nMulti-line user input \n{}", user_input);
+    match command.as_str() {
+        "help" => println!("{}", help),
+        "init" => project::init_project(),
+        _ => println!("{}", help),
+    }
+}
 
-    // the lock is released after it goes out of scope
-    Ok(())
+pub fn read_string() -> String {
+    let mut line = String::new();
+    let input = std::io::stdin().read_line(&mut line).unwrap();
+    line = line.to_string();
+    line = line.trim().to_owned();
+    return line;
 }
