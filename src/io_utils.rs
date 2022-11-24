@@ -1,5 +1,5 @@
 use std::env;
-use std::io;
+// use std::io;
 
 #[path = "project.rs"]
 mod project;
@@ -35,7 +35,7 @@ pub fn handle_args() {
 
 pub fn read_string() -> String {
     let mut line = String::new();
-    let input = std::io::stdin().read_line(&mut line).unwrap();
+    let _input = std::io::stdin().read_line(&mut line).unwrap();
     line = line.to_string();
     line = line.trim().to_owned();
     return line;

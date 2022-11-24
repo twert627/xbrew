@@ -1,7 +1,3 @@
-use exitfailure::ExitFailure;
-use reqwest::Url;
-use serde_derive::{Deserialize, Serialize};
-use std::env;
 
 // #[derive(Serialize, Deserialize, Debug)]
 // struct CommandQuote {
@@ -17,11 +13,12 @@ use std::env;
 //     }
 // }
 
-
+#[allow(dead_code)]
 pub fn fetch_xbrew_version() {
 
 }
 
+#[allow(dead_code)]
 pub fn update() {
     println!("{}", "Updating xbrew to version");
 }
